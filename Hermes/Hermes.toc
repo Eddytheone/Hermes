@@ -1,6 +1,6 @@
-## Interface: 40200
+## Interface: 50001
 ## Title: Hermes [|cffeda55fCore|r]
-## Author: inthedrops (Paperplate @ US-Stormrage)
+## Author: eddytheone & divineblitz | ORIG: inthedrops (Paperplate @ US-Stormrage)
 ## Notes: The core Hermes engine used for monitoring raid cooldowns.
 ## DefaultState: enabled
 ## SavedVariables: HermesDB2
