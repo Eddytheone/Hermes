@@ -91,12 +91,13 @@ local CLASS_ENUM = {
 	[3]		= "DRUID",
 	[4]		= "HUNTER",
 	[5]		= "MAGE",
-	[6]		= "PALADIN",
-	[7]		= "PRIEST",
-	[8]		= "ROGUE",
-	[9]		= "SHAMAN",
-	[10]	= "WARLOCK",
-	[11]	= "WARRIOR",
+	[6]		= "MONK",
+	[7]		= "PALADIN",
+	[8]		= "PRIEST",
+	[9]		= "ROGUE",
+	[10]		= "SHAMAN",
+	[11]	= "WARLOCK",
+	[12]	= "WARRIOR",
 }
 
 local MESSAGE_ENUM = {
@@ -1114,11 +1115,8 @@ function core:UpdateCommunicationsStatus()
 	local initSelfSender = false
 	--this is a special case required so that whenever we go from a party to a raid, or vice verse, that we reset sending and receiving.
 	--we can just stop it here if that's the case, and allow the code below to restart it if necessary
-	--if((wasInRaid == true and self.PlayerInRaid == false) or (wasInParty == true and self.PlayerInParty == false)) then
-	if(	(wasInParty == true and wasInRaid == false and Player.raid == true) 			--we just converted from a party to a raid
-		or 
-		(wasInRaid == true and Player.raid == false and Player.party == true) ) then	--we just converted from a raid to a party
-		
+	--if((wasInGroup == true and self.PlayerInRaid == false) or (wasInGroup == true and self.PlayerInParty == false)) then
+	if (wasInGroup == true and Player.group == true) then			--we just converted from a party to a raid
 		if(Hermes:IsSending() == true ) then
 			core:StopSending()
 		end
@@ -1128,7 +1126,7 @@ function core:UpdateCommunicationsStatus()
 	end
 
 	--start sending if needed
-	if( dbp.enabled == true and ((dbp.sender.enabled == true and ((Player.party == true and dbp.enableparty == true) or Player.raid == true)) or dbp.configMode == true) ) then
+	if( dbp.enabled == true and ((dbp.sender.enabled == true and ((Player.group == true and dbp.enableparty == true) or Player.group == true)) or dbp.configMode == true) ) then
 		if(Hermes:IsSending() == false) then
 			initSelfSender = true
 			core:StartSending()
@@ -1140,7 +1138,7 @@ function core:UpdateCommunicationsStatus()
 	end
 	
 	--start receiving if needed
-	if(dbp.enabled == true and ((dbp.receiver.enabled == true and ((Player.party == true and dbp.enableparty == true) or Player.raid == true)) or dbp.configMode == true) ) then
+	if(dbp.enabled == true and ((dbp.receiver.enabled == true and ((Player.group == true and dbp.enableparty == true) or Player.group == true)) or dbp.configMode == true) ) then
 		if(Hermes:IsReceiving() == false) then
 			core:StartReceiving()
 		end
@@ -1406,8 +1404,8 @@ end
 
 function core:Startup()
 	--reset player status so that it detects as changed
-	Player.raid = false
-	Player.party = false
+	Player.group = false
+	Player.group = false
 	Player.battleground = false
 	
 	--create default spells and items for new profile
@@ -1616,9 +1614,9 @@ function core:GetAppropriateMessageChannelAndRecipient(recipientName)
 		return "WHISPER", recipientName
 	elseif(Player.battleground == true) then
 		return "BATTLEGROUND", recipientName
-	elseif(Player.raid == true) then
+	elseif(Player.group == true) then
 		return "RAID", recipientName
-	elseif(Player.party == true) then
+	elseif(Player.group == true) then
 		return "PARTY", recipientName
 	else
 		error("Unable to determine message channel")
@@ -2243,7 +2241,7 @@ function core:UpdateSenderStatus(sender, allowEvents)
 	end
 	
 	--update sender properties
-	if Player.raid then
+	if Player.group then
 		local raidId = UnitInRaid(sender.name)
 		if raidId then
 			local name, _, _, _, _, _, _, online, dead, _, _ = GetRaidRosterInfo(raidId)
@@ -2259,7 +2257,7 @@ function core:UpdateSenderStatus(sender, allowEvents)
 			return --don't send any more events
 		end
 		
-	elseif Player.party then
+	elseif Player.group then
 		if UnitInParty(sender.name) then
 			--sender.online = true
 			sender.online = UnitIsConnected(sender.name) == 1
@@ -2334,7 +2332,7 @@ function core:InitializePlayer()
 end
 
 function core:UpdatePlayerGroupStatus()
-	local wasInGroup = Player.raid == true or Player.party == true or Player.battleground == true
+	local wasInGroup = Player.group == true or Player.group == true or Player.battleground == true
 	
 	if(GetNumGroupMembers() > 0) then
 		Player.group = true

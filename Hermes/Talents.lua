@@ -326,18 +326,18 @@ function mod:TalentQuery_Ready(e, name, realm, unit)
 	local oldvalue = self:GetTalentString(r, r.activespec)
 	
 	if (GetTalentTabInfo(1, isnotplayer, nil, nil)) then --returns nil is less than level 10?
-		r.activespec = GetActiveTalentGroup(isnotplayer) --current spec
-		r.primarytree = GetPrimaryTalentTree(isnotplayer, nil, nil)
-		local totalSpecs = GetNumTalentGroups(isnotplayer) --dual spec or not
+		r.activespec = GetActiveSpecGroup(isnotplayer) --current spec
+		r.primarytree = GetSpecialization(isnotplayer, nil, nil)
+		local totalSpecs = GetNumSpecGroups(isnotplayer) --dual spec or not
 		local specs = {}
 		for spec = 1, totalSpecs do
-			local numTabs = GetNumTalentTabs(isnotplayer) -- should be 3
+			local numTabs = GetNumSpecializations(isnotplayer) -- should be 3
 			local data = {
 				rank = {},
 				tree = {},
 			}
 			for tab = 1, numTabs do
-				for i = 1, GetNumTalents(tab, isnotplayer) do
+				for i = 1, GetNumSpecializations(tab, isnotplayer) do
 					local _, _, _, _, rank, _ = GetTalentInfo(tab, i, isnotplayer, nil, spec)
 					tinsert(data.rank, rank)
 					tinsert(data.tree, tab)
@@ -391,7 +391,7 @@ function mod:StoreClassTalents(unit)
 		dbg.classes = {}
 	end
 	local isnotplayer = not UnitIsUnit("player", unit)
-	if GetNumTalentTabs(isnotplayer) > 0 then --will return zero if less than level 10?
+	if GetNumSpecializations(isnotplayer) > 0 then --will return zero if less than level 10?
 		local _, class = UnitClass(unit)
 		if class then
 			--only update data if we don't already have it
@@ -404,10 +404,10 @@ function mod:StoreClassTalents(unit)
 				}
 				local dbclass = dbg.classes[class]
 				
-				for tab = 1, GetNumTalentTabs(isnotplayer, nil) do
+				for tab = 1, GetNumSpecializations(isnotplayer, nil) do
 					local treeName = select(2, GetTalentTabInfo(tab, isnotplayer, nil, nil))
 					tinsert(dbclass.trees, treeName)
-					for i = 1, GetNumTalents(tab, isnotplayer) do
+					for i = 1, GetNumSpecializations(tab, isnotplayer) do
 						local name, _, _, _, _, maxrank = GetTalentInfo(tab, i, isnotplayer, nil, nil)
 						if name then --bug fix, mage arcane talent tree returns nil at index 15 for name and it throws everything out of sync (inserting nil in name table but not teh other two)
 							tinsert(dbclass.tree, tab)
@@ -479,9 +479,3 @@ function mod:GetUnitPrimaryTree(unit)
 		return class.trees[r.primarytree]
 	end
 end
-
-
-
-
-
-
