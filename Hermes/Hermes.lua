@@ -631,7 +631,7 @@ function Hermes:PLAYER_ENTERING_WORLD()				--used only for one time player initi
 	
 	if(dbp.configMode == true and dbp.enabled == true) then
 		--show the warning message, but only if we're not in a part or raid
-		if GetNumGroupMembers() == 0 then
+		if GetNumGroupMembers() == nil then
 			core:ShowHermesTestModeMessage()
 			core:StartTestMode()
 		else
