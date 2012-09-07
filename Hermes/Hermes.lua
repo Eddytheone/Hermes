@@ -357,7 +357,7 @@ function Hermes:IsSenderAvailable(sender)
 end
 
 function Hermes:GetPlayerStatus()
-	return Player.name, Player.class, Player.group
+	return Player.name, Player.class, Player.group, Player.grouptype
 end
 
 function Hermes:GetAbilityStats(ability)
@@ -1069,7 +1069,7 @@ end
 -- CORE
 --------------------------------------------------------------------
 function core:OnSpellMonitorStatusChanged()
-	if dbp.enabled == true and dbp.combatLogging == true and Player.battleground == false then
+	if dbp.enabled == true and dbp.combatLogging == true and Player.groupisparty == false then
 		if not MOD_Reincarnation:IsEnabled() then
 			MOD_Reincarnation:Enable()
 		end
@@ -1408,9 +1408,11 @@ end
 
 function core:Startup()
 	--reset player status so that it detects as changed
+	Player.groupisparty = false
+	Player.groupisraid = false
+	Player.groupisbg = false
+	
 	Player.group = false
-	Player.group = false
-	Player.battleground = false
 	
 	--create default spells and items for new profile
 	if not dbp.welcome then
@@ -1616,11 +1618,11 @@ function core:GetAppropriateMessageChannelAndRecipient(recipientName)
 		return "WHISPER", Player.name --in test mode, only send whispers to yourself
 	elseif(recipientName) then
 		return "WHISPER", recipientName
-	elseif(Player.battleground == true) then
+	elseif(Player.groupisbg == true) then
 		return "BATTLEGROUND", recipientName
-	elseif(Player.group == true) then
+	elseif(Player.groupisraid == true) then
 		return "RAID", recipientName
-	elseif(Player.group == true) then
+	elseif(Player.groupisparty == true) then
 		return "PARTY", recipientName
 	else
 		error("Unable to determine message channel")
@@ -2332,16 +2334,27 @@ function core:InitializePlayer()
 	Player.name = UnitName("player")
 	Player.class = core:GetClassEnum(select(2, UnitClass("player")))
 	Player.group = false
+	Player.groupissbg = false
+	Player.groupissraid = false
+	Player.groupissparty = false
 	PLAYER_IS_WARLOCK = Player.class == core:GetClassEnum("WARLOCK")
 end
 
 function core:UpdatePlayerGroupStatus()
-	local wasInGroup = Player.group == true or Player.group == true or Player.battleground == true
+	local wasInGroup = Player.group == true
 	
 	if(GetNumGroupMembers() > 0) then
 		Player.group = true
 	else
 		Player.group = false
+	end
+	
+	if(Player.group and IsInRaid() and UnitInBattleground("player") ~= nil) then
+		Player.groupissbg = true
+	elseif (Player.group and IsInRaid() and UnitInBattleground("player") == nil) then
+		Player.groupisraid = true
+	elseif (Player.group and not IsInRaid())
+		Player.groupisparty = true
 	end
 
 	local isInGroup = Player.group == true
