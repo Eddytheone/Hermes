@@ -95,9 +95,10 @@ local CLASS_ENUM = {
 	[7]		= "PALADIN",
 	[8]		= "PRIEST",
 	[9]		= "ROGUE",
-	[10]		= "SHAMAN",
+	[10]	= "SHAMAN",
 	[11]	= "WARLOCK",
 	[12]	= "WARRIOR",
+	[13]	= "MONK",
 }
 
 local MESSAGE_ENUM = {
@@ -212,6 +213,9 @@ local DEFAULT_SPELLS = {
 	{"DEATHKNIGHT",	51052,	nil},					--Anti-Magic Zone
 	{"DEATHKNIGHT",	47528,	nil},					--Mind Freeze			--new
 	{"DEATHKNIGHT",	47476,	nil},					--Strangulate			--new
+	
+	{"MONK",		101643, nil},					--Transendence
+	{"MONK",		122278, nil},					--Dampen Harm
 }
 
 local DEFAULT_ITEMS = {
