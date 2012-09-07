@@ -3009,8 +3009,8 @@ function core:GetUnitFromName(name)
 	--changes of course so I can't just store it)
 	if name == UnitName("player") then return "player" end
 	
-	local numRaidMembers = GetNumRaidMembers()
-	local numPartyMembers = GetNumPartyMembers()
+	local numRaidMembers = GetNumGroupMembers()
+	local numPartyMembers = GetNumSubgroupMembers()
 	
 	if numRaidMembers > 0 then
 		for i = 1, numRaidMembers do
