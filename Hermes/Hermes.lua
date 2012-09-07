@@ -180,6 +180,7 @@ local DEFAULT_SPELLS = {
 	{"PRIEST",		73325,	nil},					--Leap of Faith
 	{"PRIEST",		62618,	nil},					--Power Word:Barrier
 	{"PRIEST",		108968,	nil},					--Void Shift
+	{"PRIEST",		113277,	nil},					--Symbiosis Tranquility
 	
 	{"ROGUE",		2094,	nil},					--Blind
 	{"ROGUE",		31224,	nil},					--Cloak of Shadows
