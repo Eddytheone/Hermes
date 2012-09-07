@@ -98,7 +98,6 @@ local CLASS_ENUM = {
 	[10]	= "SHAMAN",
 	[11]	= "WARLOCK",
 	[12]	= "WARRIOR",
-	[13]	= "MONK",
 }
 
 local MESSAGE_ENUM = {
@@ -149,6 +148,8 @@ local DEFAULT_SPELLS = {
 	{"DRUID",		740,	nil},					--Tranquility
 	{"DRUID",		33891,	nil},					--Tree of Life
 	{"DRUID",		5211,	nil},					--Bash				--new
+	{"DRUID",		102342,	nil},					--Ironbark
+	{"DRUID",		108238,	nil},					--Renewal
 	
 	{"HUNTER",		34477,	nil},					--Misdirection
 	
@@ -178,6 +179,7 @@ local DEFAULT_SPELLS = {
 	{"PRIEST",		33206,	nil},					--Pain Suppression
 	{"PRIEST",		73325,	nil},					--Leap of Faith
 	{"PRIEST",		62618,	nil},					--Power Word:Barrier
+	{"PRIEST",		108968,	nil},					--Void Shift
 	
 	{"ROGUE",		2094,	nil},					--Blind
 	{"ROGUE",		31224,	nil},					--Cloak of Shadows
@@ -190,6 +192,8 @@ local DEFAULT_SPELLS = {
 	{"SHAMAN",		16190,	nil},					--Mana Tide Totem
 	{"SHAMAN",		98008,	nil},					--Spirit Link Totem
 	{"SHAMAN",		57994,	nil},					--Wind Shear			--new
+	{"SHAMAN",		108280,	nil},					--Healing Tide Totem
+	{"SHAMAN",		120668,	nil},					--Stormlash Totem
 	
 	{"WARLOCK",		698,	nil},					--Ritual of Summoning
 	{"WARLOCK",		29893,	nil},					--Ritual of Souls
@@ -201,6 +205,7 @@ local DEFAULT_SPELLS = {
 	{"WARRIOR",		12975,	nil},					--Last Stand
 	{"WARRIOR",		97462,	nil},					--Rallying Cry
 	{"WARRIOR",		6552,	nil},					--Pummel				--new
+	{"WARRIOR",		114203,	nil},					--Demoralizing Banner
 	
 	{"DEATHKNIGHT",	49576,	nil},					--Death Grip
 	{"DEATHKNIGHT",	48792,	nil},					--Icebound Fortitude
@@ -216,6 +221,9 @@ local DEFAULT_SPELLS = {
 	
 	{"MONK",		101643, nil},					--Transendence
 	{"MONK",		122278, nil},					--Dampen Harm
+	{"MONK",		115176,	nil},					--Zen Meditation
+	{"MONK",		116849,	nil},					--Life Cocoon
+	{"MONK",		115310,	nil},					--Revival
 }
 
 local DEFAULT_ITEMS = {

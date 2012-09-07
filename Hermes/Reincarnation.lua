@@ -26,7 +26,8 @@ local RESURRECTIONS = {
 	[61999] = true, -- Death Knight Raise Ally: Returns the spirit to the body, restoring a dead target to life with 20% health and 20% mana. 
 	[20484] = true, -- Druid Rebirth: Returns the spirit to the body, restoring a dead target to life with 20% health and 20% mana. Glyph causes 100% health
 	[7328] = true, -- Paladin Redemption: 35% of maximum health and mana
-	[2006] = true, -- Priest Resurrection: 
+	[2006] = true, -- Priest Resurrection: 35% of maximum health and mana
+	[115178] = true, -- Monk Resuscitate: 35% of maximum health and mana
 }
 
 local function send(unit, name, guid)
