@@ -339,7 +339,7 @@ function mod:TalentQuery_Ready(e, name, realm, unit)
 				tree = {},
 			}
 			for tab = 1, numTabs do
-				for i = 1, GetSpecialization(tab, isnotplayer, r.primarytree) do
+				for i = 1, GetSpecialization(tab, isnotplayer, r.activespec) do
 					local _, _, _, _, selected, _ = GetTalentInfo(tab, i, nil, isnotplayer, spec)
 					tinsert(data.selected, selected)
 					tinsert(data.tree, tab)
