@@ -147,7 +147,7 @@ local DEFAULT_SPELLS = {
 	{"DRUID",		61336,	nil},					--Survival Instincts
 	{"DRUID",		740,	nil},					--Tranquility
 	{"DRUID",		33891,	nil},					--Tree of Life
-	{"DRUID",		5211,	nil},					--Bash				--new
+	{"DRUID",		5211,	nil},					--Bash				
 	{"DRUID",		102342,	nil},					--Ironbark
 	{"DRUID",		108238,	nil},					--Renewal
 	
@@ -156,7 +156,7 @@ local DEFAULT_SPELLS = {
 	{"MAGE",		45438,	nil},					--Ice Block
 	{"MAGE",		31687,	nil},					--Summon Water Elemental
 	{"MAGE",		80353,	nil},					--Time Warp
-	{"MAGE",		2139,	nil},					--Counterspell		--new
+	{"MAGE",		2139,	nil},					--Counterspell		
 	
 	{"PALADIN",		31850,	nil},					--Ardent Defender
 	{"PALADIN",		31821,	nil},					--Aura Mastery
@@ -170,8 +170,8 @@ local DEFAULT_SPELLS = {
 	{"PALADIN",		633,	nil},					--Lay on Hands
 	{"PALADIN",		20066,	nil},					--Repentance
 	{"PALADIN",		86150,	nil},					--Guardian of Ancient Kings
-	{"PALADIN",		96231,	nil},					--Rebuke				--new
-	{"PALADIN",		853,	nil},					--Hammer of Justice		--new
+	{"PALADIN",		96231,	nil},					--Rebuke
+	{"PALADIN",		853,	nil},					--Hammer of Justice	
 	
 	{"PRIEST",		64843,	nil},					--Divine Hymn
 	{"PRIEST",		47788,	nil},					--Guardian Spirit
@@ -185,14 +185,14 @@ local DEFAULT_SPELLS = {
 	{"ROGUE",		2094,	nil},					--Blind
 	{"ROGUE",		31224,	nil},					--Cloak of Shadows
 	{"ROGUE",		57934,	nil},					--Tricks of the Trade
-	{"ROGUE",		1766,	nil},					--Kick					--new
+	{"ROGUE",		1766,	nil},					--Kick
 	
 	{"SHAMAN",		2825,	"Horde"},				--Bloodlust
 	{"SHAMAN",		32182,	"Alliance"},			--Heroism
 	{"SHAMAN",		20608,	nil},					--Reincarnation
 	{"SHAMAN",		16190,	nil},					--Mana Tide Totem
 	{"SHAMAN",		98008,	nil},					--Spirit Link Totem
-	{"SHAMAN",		57994,	nil},					--Wind Shear			--new
+	{"SHAMAN",		57994,	nil},					--Wind Shear
 	{"SHAMAN",		108280,	nil},					--Healing Tide Totem
 	{"SHAMAN",		120668,	nil},					--Stormlash Totem
 	
@@ -205,7 +205,7 @@ local DEFAULT_SPELLS = {
 	{"WARRIOR",		64382,	nil},					--Shattering Throw
 	{"WARRIOR",		12975,	nil},					--Last Stand
 	{"WARRIOR",		97462,	nil},					--Rallying Cry
-	{"WARRIOR",		6552,	nil},					--Pummel				--new
+	{"WARRIOR",		6552,	nil},					--Pummel
 	{"WARRIOR",		114203,	nil},					--Demoralizing Banner
 	
 	{"DEATHKNIGHT",	49576,	nil},					--Death Grip
@@ -217,8 +217,8 @@ local DEFAULT_SPELLS = {
 	{"DEATHKNIGHT",	55233,	nil},					--Vampiric Blood
 	{"DEATHKNIGHT",	46584,	nil},					--Raise Dead
 	{"DEATHKNIGHT",	51052,	nil},					--Anti-Magic Zone
-	{"DEATHKNIGHT",	47528,	nil},					--Mind Freeze			--new
-	{"DEATHKNIGHT",	47476,	nil},					--Strangulate			--new
+	{"DEATHKNIGHT",	47528,	nil},					--Mind Freeze
+	{"DEATHKNIGHT",	47476,	nil},					--Strangulate
 	
 	{"MONK",		101643, nil},					--Transendence
 	{"MONK",		122278, nil},					--Dampen Harm
@@ -258,8 +258,9 @@ local EQUIPPABLE_SLOTS = {
 local SHARED_COOLDOWNS = {
 	--this table holds cooldowns for abilities that are shared with other abilities such as Last Stand and Rallying Cry.
 	--It's only needed for Spell Monitor users so only used with VirtualInstances
-	[12975] = 97462,	--Last Stand			-->		Rallying Cry
-	[97462] = 12975,	--Rallying Cry			-->		Last Stand
+	--Intentionally broken for the moment
+	--[12975] = 97462,	--Last Stand			-->		Rallying Cry
+	--[97462] = 12975,	--Rallying Cry			-->		Last Stand
 }
 
 local COMBAT_LOGGING_INSTRUCTIONS = L["COMBAT_LOGGING_INSTRUCTIONS"]
