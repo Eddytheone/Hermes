@@ -1628,7 +1628,7 @@ end
 function core:SendMessageToReceivers(recipientName, msgEnum, msgContent)
 	local msg = Hermes:Serialize({msgEnum, msgContent})
 	local channel, recipient = core:GetAppropriateMessageChannelAndRecipient(recipientName)
-	--print("Sender to Receiver: "..channel..","..tostring(recipient)..","..tostring(MESSAGE_ENUM[msgEnum]))
+	print("Sender to Receiver: "..channel..","..tostring(recipient)..","..tostring(MESSAGE_ENUM[msgEnum]))
 	Hermes:SendCommMessage(HERMES_RECEIVE_COMM, msg, channel, recipient, "NORMAL", nil, nil)
 end
 
@@ -1651,7 +1651,7 @@ end
 function core:SendMessageToSenders(recipientName, msgEnum, msgContent)
 	local msg = Hermes:Serialize({msgEnum, msgContent})
 	local channel, recipient = core:GetAppropriateMessageChannelAndRecipient(recipientName)
-	--print("Receiver to Sender: "..channel..","..tostring(recipient)..","..tostring(MESSAGE_ENUM[msgEnum]))
+	print("Receiver to Sender: "..channel..","..tostring(recipient)..","..tostring(MESSAGE_ENUM[msgEnum]))
 	Hermes:SendCommMessage(HERMES_SEND_COMM, msg, channel, recipient, "NORMAL", nil, nil)
 end
 
