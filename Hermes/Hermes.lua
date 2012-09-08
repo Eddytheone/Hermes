@@ -1130,7 +1130,16 @@ function core:UpdateCommunicationsStatus()
 	--this is a special case required so that whenever we go from a party to a raid, or vice verse, that we reset sending and receiving.
 	--we can just stop it here if that's the case, and allow the code below to restart it if necessary
 	--if((wasInGroup == true and self.PlayerInRaid == false) or (wasInGroup == true and self.PlayerInParty == false)) then
-	if (wasInGroup == true and Player.group == true) then			--we just converted from a party to a raid
+	if (wasInGroup == true and Player.group == true and IsInRaid()) then			--we just converted from a party to a raid
+		if(Hermes:IsSending() == true ) then
+			core:StopSending()
+		end
+		if(Hermes:IsReceiving() == true ) then
+			core:StopReceiving()
+		end
+	end
+	
+	if (wasInGroup == true and Player.group == true and not IsInRaid()) then			--we just converted or are a party.
 		if(Hermes:IsSending() == true ) then
 			core:StopSending()
 		end
@@ -1140,7 +1149,7 @@ function core:UpdateCommunicationsStatus()
 	end
 
 	--start sending if needed
-	if ( dbp.enabled == true and ((dbp.sender.enabled == true and ((Player.group == true and dbp.enableparty == true) or Player.groupisraid == true)) or dbp.configMode == true) ) then
+	if ( dbp.enabled == true and ((dbp.sender.enabled == true and ((Player.group == true and dbp.enableparty == true) or Player.group == true)) or dbp.configMode == true) ) then
 		if(Hermes:IsSending() == false) then
 			initSelfSender = true
 			core:StartSending()
@@ -1152,7 +1161,7 @@ function core:UpdateCommunicationsStatus()
 	end
 	
 	--start receiving if needed
-	if ( dbp.enabled == true and ((dbp.sender.enabled == true and ((Player.group == true and dbp.enableparty == true) or Player.groupisraid == true)) or dbp.configMode == true) ) then
+	if ( dbp.enabled == true and ((dbp.sender.enabled == true and ((Player.group == true and dbp.enableparty == true) or Player.group == true)) or dbp.configMode == true) ) then
 		if(Hermes:IsReceiving() == false) then
 			core:StartReceiving()
 		end
