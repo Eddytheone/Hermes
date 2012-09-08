@@ -284,6 +284,12 @@ function mod:UpdateRosterChanges()
 			mod:QueueTalentQuery(r.unit)
 		end
 	end
+	
+	-- DEBUG: Print something
+	print(members[1])
+	print(members[2])
+	print(members[3])
+	print(members[4])
 	-- DEBUG: Print something
 	print(roster[1])
 	print(roster[2])
