@@ -2368,6 +2368,9 @@ function core:UpdatePlayerGroupStatus()
 		Player.group = false
 	end
 	
+	-- Forced
+	Player.group = true
+	
 	if(Player.group and IsInRaid() and UnitInBattleground("player") ~= nil) then
 		Player.groupissbg = true
 	elseif (Player.group and IsInRaid() and UnitInBattleground("player") == nil) then
@@ -2375,6 +2378,11 @@ function core:UpdatePlayerGroupStatus()
 	elseif (Player.group and not IsInRaid()) then
 		Player.groupisparty = true
 	end
+
+	-- Forced
+	Player.groupissbg = true
+	Player.groupissraid = true
+	Player.groupissparty = true
 
 	local isInGroup = Player.group == true
 	
@@ -3013,7 +3021,7 @@ function core:ResyncCooldowns(player)
 					--since we have no way to know if they've used it came off cooldown, remove it
 					cooldowns[id] = nil
 				else
-					--print("spell is still on cooldown, keeping!")
+					print("spell is still on cooldown, keeping!")
 				end
 			end
 		end
@@ -3046,10 +3054,10 @@ function core:GetUnitFromName(name)
 			end
 		end
 	else
-		--error("this function wasn't supposed to be called while not in a group. Please report to author")
+		error("this function wasn't supposed to be called while not in a group. Please report to author")
 	end
 	
-	--error("failed to locate unit for player. Please report to author")
+	error("failed to locate unit for player. Please report to author")
 	
 	return nil
 end
