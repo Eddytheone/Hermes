@@ -33,7 +33,10 @@ function mod:OnEnable()
 	LTQ.RegisterCallback(mod, "TalentQuery_Ready")
 	LTQ.RegisterCallback(mod, "TalentQuery_Ready_Outsider")
 	self:RegisterEvent("GROUP_ROSTER_UPDATE")
+<<<<<<< HEAD
 	self:RegisterEvent("GROUP_ROSTER_UPDATE")
+=======
+>>>>>>> Event registers for GROUP_ROSTER_UPDATE
 	self:RegisterEvent("UNIT_NAME_UPDATE")
 	self:RegisterEvent("PLAYER_TALENT_UPDATE")
 	self:RegisterEvent("UNIT_LEVEL")
@@ -47,7 +50,10 @@ function mod:OnDisable()
 	LTQ.UnregisterCallback(mod, "TalentQuery_Ready")
 	LTQ.UnregisterCallback(mod, "TalentQuery_Ready_Outsider")
 	self:UnregisterEvent("GROUP_ROSTER_UPDATE")
+<<<<<<< HEAD
 	self:UnregisterEvent("GROUP_ROSTER_UPDATE")
+=======
+>>>>>>> Event registers for GROUP_ROSTER_UPDATE
 	self:UnregisterEvent("UNIT_NAME_UPDATE")
 	self:UnregisterEvent("PLAYER_TALENT_UPDATE")
 	self:UnregisterEvent("UNIT_LEVEL")
@@ -62,9 +68,12 @@ function mod:SetProfile(profile)
 	dbg = profile
 end
 
+<<<<<<< HEAD
 function mod:GROUP_ROSTER_UPDATE()
 	self:UpdateRosterChanges()
 end
+=======
+>>>>>>> Event registers for GROUP_ROSTER_UPDATE
 
 function mod:GROUP_ROSTER_UPDATE()
 	self:UpdateRosterChanges()
