@@ -657,10 +657,6 @@ function Hermes:GROUP_ROSTER_UPDATE()
 	core:UpdateCommunicationsStatus()
 end
 
-function Hermes:GROUP_ROSTER_UPDATE()
-	core:UpdateCommunicationsStatus()
-end
-
 function Hermes:ACTIVE_TALENT_GROUP_CHANGED()
 	--force a hard reboot
 	core:Shutdown()
@@ -1464,7 +1460,6 @@ function core:Startup()
 	end
 
 	Hermes:RegisterEvent("GROUP_ROSTER_UPDATE")
-	Hermes:RegisterEvent("GROUP_ROSTER_UPDATE")
 	
 	--start capturing spell casts
 	Hermes:RegisterEvent("COMBAT_LOG_EVENT_UNFILTERED")
@@ -1478,7 +1473,6 @@ function core:Startup()
 end
 
 function core:Shutdown()
-	Hermes:UnregisterEvent("GROUP_ROSTER_UPDATE")
 	Hermes:UnregisterEvent("GROUP_ROSTER_UPDATE")
 	
 	--stop remembering spell casts
