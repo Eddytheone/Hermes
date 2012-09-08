@@ -333,7 +333,7 @@ function mod:TalentQuery_Ready(e, name, realm, unit)
 	--remember the old talents as a string for comparison later
 	local oldvalue = self:GetTalentString(r, r.activespec)
 	
-	if (GetTalentTabInfo(1, isnotplayer, nil, nil)) then --returns nil is less than level 10?
+	if (GetSpecializationInfo(1, isnotplayer, nil, nil)) then --returns nil is less than level 10?
 		r.activespec = GetActiveSpecGroup(isnotplayer) --current spec
 		r.primarytree = GetSpecialization(isnotplayer, nil, nil)
 		local totalSpecs = GetNumSpecGroups(isnotplayer) --dual spec or not
