@@ -19,8 +19,8 @@ Example Usage:
 	function MyAddon:TalentQuery_Ready(e, name, realm, unitid)
 		local isnotplayer = not UnitIsUnit(unitid, "player")
 		local spec = {}
-		for tab = 1, GetNumTalentTabs(isnotplayer) do
-			local _, _, _, _, _, pointsspent = GetTalentTabInfo(tab, isnotplayer)
+		for tab = 1, GetNumSpecializations(isnotplayer) do
+			local _, _, _, _, _, pointsspent = GetSpecializationInfo(tab, isnotplayer)
 			tinsert(spec, pointsspent)
 		end
 		raidTalents[UnitGUID(unitid)] = spec
