@@ -160,7 +160,6 @@ local DEFAULT_SPELLS = {
 	
 	{"PALADIN",		31850,	nil},					--Ardent Defender
 	{"PALADIN",		31821,	nil},					--Aura Mastery
-	{"PALADIN",		70940,	nil},					--Divine Guardian
 	{"PALADIN",		498,	nil},					--Divine Protection
 	{"PALADIN",		642,	nil},					--Divine Shield
 	{"PALADIN",		1044,	nil},					--Hand of Freedom
@@ -172,6 +171,7 @@ local DEFAULT_SPELLS = {
 	{"PALADIN",		86150,	nil},					--Guardian of Ancient Kings
 	{"PALADIN",		96231,	nil},					--Rebuke
 	{"PALADIN",		853,	nil},					--Hammer of Justice	
+	{"PALADIN",		31821,	nil},					--Devotion Aura
 	
 	{"PRIEST",		64843,	nil},					--Divine Hymn
 	{"PRIEST",		47788,	nil},					--Guardian Spirit
