@@ -405,7 +405,7 @@ function mod:StoreClassTalents(unit)
 				local dbclass = dbg.classes[class]
 				
 				for tab = 1, GetNumSpecializations(isnotplayer, nil) do
-					local treeName = select(2, GetTalentTabInfo(tab, isnotplayer, nil, nil))
+					local treeName = select(2, GetSpecializationInfo(tab, isnotplayer, nil, nil))
 					tinsert(dbclass.trees, treeName)
 					for i = 1, GetNumSpecializations(tab, isnotplayer) do
 						local name, _, _, _, _, maxrank = GetTalentInfo(tab, i, isnotplayer, nil, nil)
