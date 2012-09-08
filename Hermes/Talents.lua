@@ -68,11 +68,6 @@ end
 
 function mod:PARTY_MEMBERS_CHANGED()
 	self:UpdateRosterChanges()
-	-- DEBUG: Print something
-	print(roster[1])
-	print(roster[2])
-	print(roster[3])
-	print(roster[4])
 end
 
 function mod:PLAYER_TALENT_UPDATE()
@@ -223,6 +218,9 @@ function mod:UpdateRosterChanges()
 		prefix = "party"
 		members = GetNumGroupMembers()
 	end
+	
+	prefix = "party"
+	members = GetNumGroupMembers()
 	
 	--first mark everyone as not active
 	for guid, r in pairs(roster) do
