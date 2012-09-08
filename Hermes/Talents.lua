@@ -209,7 +209,7 @@ function mod:UpdateRosterChanges()
 	local prefix = "none"
 	local members = nil
 	--only support raid and party, no BG's
-	if (GetNumGroupMembers() > 0) then
+	if (GetNumGroupMembers() > 0 and IsInRaid()) then
 		--player in raid
 		prefix = "raid"
 		members = GetNumGroupMembers()
