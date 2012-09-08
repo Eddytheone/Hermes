@@ -1139,7 +1139,7 @@ function core:UpdateCommunicationsStatus()
 	end
 
 	--start sending if needed
-	if( dbp.enabled == true and ((dbp.sender.enabled == true and ((Player.group == true and dbp.enableparty == true) or Player.group == true)) or dbp.configMode == true) ) then
+	if ( dbp.enabled == true and ((dbp.sender.enabled == true and ((Player.group == true and dbp.enableparty == true) or Player.groupisraid == true)) or dbp.configMode == true) ) then
 		if(Hermes:IsSending() == false) then
 			initSelfSender = true
 			core:StartSending()
@@ -1151,7 +1151,7 @@ function core:UpdateCommunicationsStatus()
 	end
 	
 	--start receiving if needed
-	if(dbp.enabled == true and ((dbp.receiver.enabled == true and ((Player.group == true and dbp.enableparty == true) or Player.group == true)) or dbp.configMode == true) ) then
+	if ( dbp.enabled == true and ((dbp.sender.enabled == true and ((Player.group == true and dbp.enableparty == true) or Player.groupisraid == true)) or dbp.configMode == true) ) then
 		if(Hermes:IsReceiving() == false) then
 			core:StartReceiving()
 		end
@@ -2362,7 +2362,7 @@ function core:UpdatePlayerGroupStatus()
 		Player.groupissbg = true
 	elseif (Player.group and IsInRaid() and UnitInBattleground("player") == nil) then
 		Player.groupisraid = true
-	elseif (Player.group and not IsInRaid())
+	elseif (Player.group and not IsInRaid()) then
 		Player.groupisparty = true
 	end
 
