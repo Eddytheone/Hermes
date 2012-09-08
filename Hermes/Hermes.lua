@@ -653,11 +653,11 @@ function Hermes:PLAYER_ENTERING_WORLD()				--used only for one time player initi
 	end
 end
 
-function Hermes:RAID_ROSTER_UPDATE()
+function Hermes:GROUP_ROSTER_UPDATE()
 	core:UpdateCommunicationsStatus()
 end
 
-function Hermes:PARTY_MEMBERS_CHANGED()
+function Hermes:GROUP_ROSTER_UPDATE()
 	core:UpdateCommunicationsStatus()
 end
 
@@ -1463,8 +1463,8 @@ function core:Startup()
 		Hermes:RegisterEvent("PLAYER_ENTERING_WORLD")
 	end
 
-	Hermes:RegisterEvent("RAID_ROSTER_UPDATE")
-	Hermes:RegisterEvent("PARTY_MEMBERS_CHANGED")
+	Hermes:RegisterEvent("GROUP_ROSTER_UPDATE")
+	Hermes:RegisterEvent("GROUP_ROSTER_UPDATE")
 	
 	--start capturing spell casts
 	Hermes:RegisterEvent("COMBAT_LOG_EVENT_UNFILTERED")
@@ -1478,8 +1478,8 @@ function core:Startup()
 end
 
 function core:Shutdown()
-	Hermes:UnregisterEvent("RAID_ROSTER_UPDATE")
-	Hermes:UnregisterEvent("PARTY_MEMBERS_CHANGED")
+	Hermes:UnregisterEvent("GROUP_ROSTER_UPDATE")
+	Hermes:UnregisterEvent("GROUP_ROSTER_UPDATE")
 	
 	--stop remembering spell casts
 	Hermes:UnregisterEvent("COMBAT_LOG_EVENT_UNFILTERED")

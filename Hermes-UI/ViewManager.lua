@@ -148,7 +148,7 @@ end
 ------------------------------------------------------------
 -- ADDON
 ------------------------------------------------------------
-function mod:RAID_ROSTER_UPDATE()
+function mod:GROUP_ROSTER_UPDATE()
 	--group might have changed
 	self:UpdatePlayerData()
 	self:SyncViewWithPlayerFilters()
@@ -396,12 +396,12 @@ function mod:CreateViews()
 end
 
 function mod:Start()
-	self:RegisterEvent("RAID_ROSTER_UPDATE")
+	self:RegisterEvent("GROUP_ROSTER_UPDATE")
 	self:EnableView() --shows all the views when receiving
 end
 
 function mod:Stop()
-	self:UnregisterEvent("RAID_ROSTER_UPDATE")
+	self:UnregisterEvent("GROUP_ROSTER_UPDATE")
 	self:EnableView() --shows all the views when not receiving
 end
 
