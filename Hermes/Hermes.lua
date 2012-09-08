@@ -20,7 +20,7 @@ local GetTime = GetTime
 local ceil, abs, format = ceil, abs, format
 local tinsert, tremove, pairs, ipairs, wipe, type, tonumber, sort, tostring = tinsert, tremove, pairs, ipairs, wipe, type, tonumber, sort, tostring
 local GetInventorySlotInfo, GetInventoryItemID, GetInventoryItemCooldown, GetItemCooldown = GetInventorySlotInfo, GetInventoryItemID, GetInventoryItemCooldown, GetItemCooldown
-local GetNumGroupMembers, GetNumSubgroupMembers
+local GetNumGroupMembers, GetNumSubgroupMembers = GetNumGroupMembers, GetNumSubgroupMembers
 local UnitIsVisible, UnitInRaid, GetRaidRosterInfo, UnitIsConnected, UnitInParty, UnitIsDead, UnitIsGhost, UnitClass, UnitLevel, UnitRace = UnitIsVisible, UnitInRaid, GetRaidRosterInfo, UnitIsConnected, UnitInParty, UnitIsDead, UnitIsGhost, UnitClass, UnitLevel, UnitRace
 local FindSpellBookSlotBySpellID, GetSpellBookItemInfo, GetItemInfo, GetItemIcon, GetSpellInfo = FindSpellBookSlotBySpellID, GetSpellBookItemInfo, GetItemInfo, GetItemIcon, GetSpellInfo
 local GetPlayerInfoByGUID = GetPlayerInfoByGUID
@@ -640,7 +640,7 @@ function Hermes:PLAYER_ENTERING_WORLD()				--used only for one time player initi
 	
 	if(dbp.configMode == true and dbp.enabled == true) then
 		--show the warning message, but only if we're not in a part or raid
-		if GetNumGroupMembers() == nil then
+		if (GetNumGroupMembers() == nil) then
 			core:ShowHermesTestModeMessage()
 			core:StartTestMode()
 		else
