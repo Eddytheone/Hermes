@@ -91,13 +91,13 @@ local CLASS_ENUM = {
 	[3]		= "DRUID",
 	[4]		= "HUNTER",
 	[5]		= "MAGE",
-	[6]		= "MONK",
-	[7]		= "PALADIN",
-	[8]		= "PRIEST",
-	[9]		= "ROGUE",
-	[10]	= "SHAMAN",
-	[11]	= "WARLOCK",
-	[12]	= "WARRIOR",
+	[6]		= "PALADIN",
+	[7]		= "PRIEST",
+	[8]		= "ROGUE",
+	[9]		= "SHAMAN",
+	[10]	= "WARLOCK",
+	[11]	= "WARRIOR",
+	[12]	= "MONK",
 }
 
 local MESSAGE_ENUM = {

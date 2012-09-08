@@ -68,6 +68,11 @@ end
 
 function mod:PARTY_MEMBERS_CHANGED()
 	self:UpdateRosterChanges()
+	-- DEBUG: Print something
+	print(roster[1])
+	print(roster[2])
+	print(roster[3])
+	print(roster[4])
 end
 
 function mod:PLAYER_TALENT_UPDATE()
@@ -287,6 +292,11 @@ function mod:UpdateRosterChanges()
 			mod:QueueTalentQuery(r.unit)
 		end
 	end
+	-- DEBUG: Print something
+	print(roster[1])
+	print(roster[2])
+	print(roster[3])
+	print(roster[4])
 end
 
 function mod:QueueTalentQuery(unit)
